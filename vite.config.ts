@@ -28,7 +28,7 @@ const manifestForPlugIn: any = {
       purpose:'apple touch icon',
     },
     {
-      src: './src/assets/apple-touch-icon.png',
+      src: './src/assets/maskable-icon.png',
       sizes:'512x512',
       type:'image/png',
       purpose:'any maskable',
