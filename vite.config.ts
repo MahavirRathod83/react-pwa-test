@@ -3,9 +3,9 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from "vite-plugin-pwa";
 
 const manifestForPlugIn: any = {
-    // add this to cache all the imports
-    workbox: {
-      globPatterns: ["**/*"],
+  // add this to cache all the imports
+  workbox: {
+    globPatterns: ["**/*"],
   },
   // add this to cache all the
   // static assets in the public folder
@@ -33,6 +33,12 @@ const manifestForPlugIn: any = {
       sizes:'180x180',
       type:'image/png',
       purpose:'apple touch icon',
+    },
+    {
+      src: './public/maskable-icon.png',
+      sizes:'512x512',
+      type:'image/png',
+      purpose:'any maskable',
     }
   ],
   theme_color:'#171717',
