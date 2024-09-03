@@ -7,9 +7,9 @@ const manifestForPlugin = {
   registerType: "prompt",
   includeAssets: ['favicon.ico', "apple-touc-icon.png", "masked-icon.png" ],
   manifest: {
-    name: "Weather app",
-    short_name: "Weather app",
-    description: "An app that can show the weather forecast for your city.",
+    name: "React PWA",
+    short_name: "React PWA",
+    description: "React PWA",
     icons: [
       
       {
