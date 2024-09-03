@@ -10,25 +10,25 @@ const manifestForPlugIn: any = {
     short_name:"react-vite-app",
     description:"I am a simple vite app",
     icons:[{
-      src: './public/vite.svg',
+      src: './src/assets/android-chrome-512x512.png',
       sizes:'192x192',
       type:'image/png',
       purpose:'favicon'
     },
     {
-      src:'./public/vite.svg',
+      src:'./src/assets/android-chrome-512x512.png',
       sizes:'512x512',
       type:'image/png',
       purpose:'favicon'
     },
     {
-      src: './public/vite.svg',
+      src: './src/assets/apple-touch-icon.png',
       sizes:'180x180',
       type:'image/png',
       purpose:'apple touch icon',
     },
     {
-      src: './public/vite.svg',
+      src: './src/assets/apple-touch-icon.png',
       sizes:'512x512',
       type:'image/png',
       purpose:'any maskable',
