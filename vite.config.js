@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 
-const manifestForPlugin: any = {
+const manifestForPlugin = {
   registerType: "prompt",
   includeAssets: ['favicon.ico', "apple-touc-icon.png", "masked-icon.png" ],
   manifest: {
