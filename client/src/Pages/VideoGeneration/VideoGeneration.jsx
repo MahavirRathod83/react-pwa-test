@@ -35,7 +35,7 @@ const VideoGeneration = () => {
     try {
       const response = await apiService.GetVideoGenerationUrl(id);
       if (response.generation.state == "completed") {
-        const res = apiService.AddVideoGeneration({
+        const res = await apiService.AddVideoGeneration({
           title: response.generation.prompt,
           url: response.generation.video.url,
         });
@@ -111,9 +111,7 @@ const VideoGeneration = () => {
                 return (
                   <div className="list mt-5" key={index}>
                     <h4 className="text-start">Title: {item.title}</h4>
-                    <video width="100%" height="100%" controls>
-                      <source src={item.url} type="video/mp4" />
-                    </video>
+                    <video width="100%" height="100%" controls src={item.url} type="video/mp4" />
                   </div>
                 );
               })}
