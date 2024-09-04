@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let key = "e3c59362838d6e9ebcf6f897d1edf88ec7a4b40e10c1e74c3ca459645139bfa0";
+let key = "69cfdf0767284c03b186a563b7ad70bc83bce0685825d052e6b9e02f8bc9dac6";
 let config = {
   headers: { "X-API-Key": key },
 };
@@ -16,9 +16,8 @@ export const GetVideoGenerationKey = async (value) => {
       body,
       config
     );
-    console.log("response -->", response);
-    if (response.code == 200) {
-      return response.data.task_id;
+    if (response.data.code == 200) {
+      return response.data.data.task_id;
     } else {
       throw new Error(response);
     }
@@ -29,17 +28,12 @@ export const GetVideoGenerationKey = async (value) => {
 
 export const GetVideoGenerationUrl = async (id) => {
   try {
-    let body = {
-      task_id: id,
-    };
     const response = await axios.get(
       "https://api.piapi.ai/api/luma/v1/video/" + id,
-      body,
       config
     );
-    console.log("response url -->", response);
-    if (response.code == 200) {
-      return response.data;
+    if (response.data.code == 200) {
+      return response.data.data;
     } else {
       throw new Error(response);
     }

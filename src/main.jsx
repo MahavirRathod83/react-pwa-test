@@ -4,11 +4,12 @@ import ReactDOM from 'react-dom/client';
 import { HelmetProvider } from 'react-helmet-async';
 import './index.css'
 import VideoGeneration from "./Pages/VideoGeneration/VideoGeneration"
+import DashboardLayoutBasic from './Components/Dashboard/Dashboard';
 
   ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
       <HelmetProvider>
-        <VideoGeneration />
+        <DashboardLayoutBasic />
       </HelmetProvider>
     </React.StrictMode>
   );
