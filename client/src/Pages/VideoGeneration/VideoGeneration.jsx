@@ -36,7 +36,7 @@ const VideoGeneration = () => {
       const response = await apiService.GetVideoGenerationUrl(id);
       if (response.generation.state == "completed") {
         const res = await apiService.AddVideoGeneration({
-          title: response.generation.prompt,
+          text: response.generation.prompt,
           url: response.generation.video.url,
         });
         clearInterval(Interval);
@@ -79,13 +79,14 @@ const VideoGeneration = () => {
       <Paper elevation={3} className="w-75 h-100">
         <div className="container outer-container">
           <div className="w-100 mt-4 mb-5 d-flex align-items-center">
-            <input
+            <textarea
               type="text"
               className="form-control w-50"
               id="SearchValue"
               name="SearchValue"
               placeholder="Enter text to convert video"
               onChange={(e) => FormValuesHandler(e)}
+              rows={5}
             />
             {IsApiResponsePending ? (
               <div className="ms-3">
@@ -101,6 +102,7 @@ const VideoGeneration = () => {
               </button>
             )}
           </div>
+          {console.log(List)}
           {List.length == 0 ? (
             <div className="no-data-text">
               <h5>No Data found</h5>
@@ -110,7 +112,7 @@ const VideoGeneration = () => {
               {List.map((item, index) => {
                 return (
                   <div className="list mt-5" key={index}>
-                    <h4 className="text-start">Title: {item.title}</h4>
+                    <p className="text-start text">Text: {item.text}</p>
                     <video width="100%" height="100%" controls src={item.url} type="video/mp4" />
                   </div>
                 );

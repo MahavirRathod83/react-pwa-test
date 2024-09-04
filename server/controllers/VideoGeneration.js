@@ -18,10 +18,10 @@ exports.getVideoGenerationList = async (req, res) => {
   }
 };
 
-exports.addVideoGenerationList = async (req, res) => {
+exports.addVideoGeneration = async (req, res) => {
   try {
     const list = await db({
-      title: req.body.title,
+      text: req.body.text,
       url: req.body.url
     });
     await list.save();
