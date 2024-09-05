@@ -7,21 +7,34 @@ import CircularIndeterminate from "../../Components/Progress/Progress.jsx";
 
 const VideoGeneration = () => {
   let Interval = "";
-  const [List, setList] = useState([]);
+  const [List, setList] = useState([
+    {
+      url: "https://storage.cdn-luma.com/dream_machine/d9fbc34a-8e06-4ff8-9c92-ab0b496ff7ac/watermarked_video0a6b00510408f47afaf2b1984f35da760.mp4",
+      text: "Batman",
+    },
+    {
+      url: "https://storage.cdn-luma.com/dream_machine/81bbbbb8-84dc-4676-9643-b26ff7fd453e/watermarked_video08a9060dc059245aabe161cb304c4558a.mp4",
+      text: "Running Car",
+    },
+    {
+      url: "https://storage.cdn-luma.com/dream_machine/8b37322d-8f93-4c6e-9418-2a464b68caf4/watermarked_video0333de785be3a489b8299db436318ae66.mp4",
+      text: "SuperHero",
+    },
+  ]);
   const [FormValues, setFormValues] = useState({
     SearchValue: "",
   });
   const [IsLoading, setIsLoading] = useState(false);
   const [IsApiResponsePending, setIsApiResponsePending] = useState(false);
 
-  useEffect(() => {
-    getVideoGeneratedList();
-  }, []);
+  // useEffect(() => {
+  //   getVideoGeneratedList();
+  // }, []);
 
   const getVideoGeneratedList = async () => {
     try {
       setIsLoading(true);
-      const response = await apiService.GetVideoGenerationList();      
+      const response = await apiService.GetVideoGenerationList();
       localStorage.setItem("VideoGenerationList", JSON.stringify(response));
       setList(response);
       setIsLoading(false);
@@ -29,7 +42,7 @@ const VideoGeneration = () => {
       setIsLoading(false);
       console.log(error);
     }
-  }
+  };
 
   const GetVideoGeneratedUrl = async (id) => {
     try {
@@ -52,13 +65,17 @@ const VideoGeneration = () => {
 
   const VideoGenerationHandler = async () => {
     try {
-      setIsLoading(true);
-      const id = await apiService.GetVideoGenerationKey(FormValues.SearchValue);
-      setIsLoading(false);
-      setIsApiResponsePending(true);
-      Interval = setInterval(() => {
-        GetVideoGeneratedUrl(id);
-      }, 5000);
+      // setIsLoading(true);
+      // const id = await apiService.GetVideoGenerationKey(FormValues.SearchValue);
+      // setIsLoading(false);
+      // setIsApiResponsePending(true);
+      // Interval = setInterval(() => {
+      //   GetVideoGeneratedUrl(id);
+      // }, 5000);
+      setList([{
+        text: FormValues.SearchValue,
+        url: "",
+      }, ...List]);
     } catch (error) {
       setIsApiResponsePending(false);
       setIsLoading(false);
@@ -102,7 +119,6 @@ const VideoGeneration = () => {
               </button>
             )}
           </div>
-          {console.log(List)}
           {List.length == 0 ? (
             <div className="no-data-text">
               <h5>No Data found</h5>
@@ -112,8 +128,17 @@ const VideoGeneration = () => {
               {List.map((item, index) => {
                 return (
                   <div className="list mt-5" key={index}>
-                    <p className="text-start text">Text: {item.text}</p>
-                    <video width="100%" height="100%" controls src={item.url} type="video/mp4" />
+                    <div className="d-flex align-item-center">
+                      <b>Text:</b>
+                      <p className="text-start text ms-2">{item.text}</p>
+                    </div>
+                    <video
+                      width="100%"
+                      height="100%"
+                      controls
+                      src={item.url}
+                      type="video/mp4"
+                    />
                   </div>
                 );
               })}
